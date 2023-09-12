@@ -7,7 +7,7 @@ Module `System` is just a configuration to define a classpath including all plan
 
 The main `build.gradle` defines `idea.project.settings.runConfigurations` using the idea-ext plugin.
 
-While choosing `delegateBuildRunToGradle = true` works as expected. However, running it by gradle instead does not include any planet.
+Choosing `delegateBuildRunToGradle = true` works as expected. However, running it by gradle instead does not include any planet.
 Seems gradle uses the classpath of the main class, only.
 
 
