@@ -42,12 +42,13 @@ subprojects {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    /*
-     * This moves all intellij out/ into build/idea.
-     * It has the advantage, that gradle clean removes any idea output, too.
-     */
-
     idea {
+
+        /*
+         * This moves all intellij out/ into build/idea.
+         * It has the advantage, that gradle clean removes any idea output, too.
+         */
+
         module {
             inheritOutputDirs = false
             outputDir file('build/idea/main')

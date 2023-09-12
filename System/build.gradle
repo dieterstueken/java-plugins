@@ -8,6 +8,7 @@ dependencies {
 }
 
 run {
+    // this is another way to define a task in gradle directly which works as expected.
     mainClass = 'sample.HelloWorlds'
 }
 
