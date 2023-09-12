@@ -1,0 +1,57 @@
+import org.jetbrains.gradle.ext.*
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'idea'
+    id 'org.jetbrains.gradle.plugin.idea-ext'
+}
+
+version="1.0"
+
+idea.project {
+    jdkName = '17'
+    languageLevel = JavaVersion.VERSION_17
+    vcs = 'Git'
+
+    settings {
+        delegateActions {
+            // setting this to true does not include any planets
+            delegateBuildRunToGradle = false
+        }
+
+        runConfigurations {
+            "Hello Worlds"(Application) {
+                mainClass = 'sample.HelloWorlds'
+                moduleName = ("${project.name}.System.main")
+            }
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'idea'
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    /*
+     * This moves all intellij out/ into build/idea.
+     * It has the advantage, that gradle clean removes any idea output, too.
+     */
+
+    idea {
+        module {
+            inheritOutputDirs = false
+            outputDir file('build/idea/main')
+            testOutputDir file('build/idea/test')
+        }
+    }
+}

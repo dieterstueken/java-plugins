@@ -1,0 +1,13 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation project(':Earth')
+    implementation project(':Mars')
+}
+
+run {
+    mainClass = 'sample.HelloWorlds'
+}
+
